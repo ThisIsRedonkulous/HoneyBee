@@ -35,7 +35,7 @@
 
 #if defined(WIN32)
 	#include <XInput.h>
-	#pragma comment(lib, "XInput.lib")
+	#pragma comment(lib, "XInput9_1_0.lib")
 	#include <assert.h>
 #elif defined(__APPLE__)
 	#include <Carbon/Carbon.h>
