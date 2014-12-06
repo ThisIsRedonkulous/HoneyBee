@@ -48,4 +48,5 @@ private:
 	time_t beginTime, currentTime;
 	PhysicsActor *p1;
 	PhysicsActor *p2;
+	Vector2 *vector;
 };

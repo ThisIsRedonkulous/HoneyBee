@@ -99,18 +99,6 @@ DemoGameManager::DemoGameManager()
 	#if ANGEL_MOBILE
 		_screens.push_back(new DemoScreenMobileSimulator());				// 0
 	#else
-		_screens.push_back(new DemoScreenStart());							// 0
-		_screens.push_back(new DemoScreenInstructions());					// 1
-		_screens.push_back(new DemoScreenSimpleActor());					// 2
-		_screens.push_back(new DemoScreenRenderLayers());					// 3
-		_screens.push_back(new DemoScreenControllerInstructions());			// 4
-		_screens.push_back(new DemoScreenMovingActor());					// 5
-		_screens.push_back(new DemoScreenMultipleControllers());			// 6
-		_screens.push_back(new DemoScreenMobileSimulator());				// 7
-		_screens.push_back(new DemoScreenDefFile());						// 8
-		_screens.push_back(new DemoScreenLevelFile());						// 9
-		_screens.push_back(new DemoScreenBindingInstructions());			//10
-		_screens.push_back(new DemoScreenParticleActors());					//11
 		_screens.push_back(new DemoScreenPhysicsActor());					//12
 		_screens.push_back(new DemoScreenMessagePassing());					//13
 		_screens.push_back(new DemoScreenIntervals());						//14

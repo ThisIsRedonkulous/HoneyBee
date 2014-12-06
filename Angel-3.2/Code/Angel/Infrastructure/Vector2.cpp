@@ -148,6 +148,8 @@ void Vector2::Normalize()
 {
 	float c = cos(radians);
 	float s = sin(radians);
+	std::cout << "cos = " << c << "\nsin = " << s << "\n";
+	std::cout << "x should be = " << value.X*c - value.Y*s << "\ny should be = " << value.Y*c + value.X*s << "\n";
 	return Vector2(value.X*c-value.Y*s,value.Y*c+value.X*s);
 }
 

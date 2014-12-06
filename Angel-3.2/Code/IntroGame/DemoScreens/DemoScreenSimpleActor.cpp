@@ -58,7 +58,7 @@ void DemoScreenSimpleActor::Start()
 
 	//Demo housekeeping below this point. 
 	#pragma region Demo Housekeeping
-	t = new TextActor("Console", "Here's a simple Actor. (Press [B] to change it.)");
+	t = new TextActor("Console", "HONEY BEES!!!!");
 	t->SetPosition(0, 3.5);
 	t->SetAlignment(TXT_Center);
 	theWorld.Add(t);
@@ -85,8 +85,8 @@ void DemoScreenSimpleActor::Update(float dt)
 	{
 		a->SetColor(1,1,1,1); //(white and opaque so the texture comes through fully)
 		a->ClearSpriteInfo();
-		a->SetSprite("Resources/Images/angel.png"); //Loads any image supported by DevIL (see docs)
-		t->SetDisplayString("Pretty easy. You can do animations as well. Press [X] to check it out.");
+		a->SetSprite("Resources/Images/bee.jpg"); //Loads any image supported by DevIL (see docs)
+		t->SetDisplayString("Honey Bees!!");
 	}
 	if ((theController.IsConnected() && theController.IsXButtonDown()) || theInput.IsKeyDown('x'))
 	{
