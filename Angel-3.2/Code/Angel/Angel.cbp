@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Angel" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug Win32">
+				<Option output="Angel" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add option="-DFTGL_LIBRARY_STATIC" />
+					<Add option="-DANGEL_DEBUG" />
+					<Add directory="." />
+					<Add directory="$(DXSDK_DIR)include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/freetype-2.4.8/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/FTGL/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/DevIL-SDK-1.7.8/win/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/Box2D-2.2.1" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/glfw-3.0.3/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/FMOD/inc" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/lua-5.2.1/src" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/libogg-1.3.0/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/libvorbis-1.3.2/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/openal-soft-1.15-bin/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/gwen/include" />
+				</Compiler>
+			</Target>
+			<Target title="Release Win32">
+				<Option output="Angel" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add option="-DFTGL_LIBRARY_STATIC" />
+					<Add option="-DANGEL_RELEASE" />
+					<Add directory="." />
+					<Add directory="$(DXSDK_DIR)include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/freetype-2.4.8/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/FTGL/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/DevIL-SDK-1.7.8/win/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/Box2D-2.2.1" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/glfw-3.0.3/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/FMOD/inc" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/lua-5.2.1/src" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/libogg-1.3.0/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/libvorbis-1.3.2/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/openal-soft-1.15-bin/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/Angel/Libraries/gwen/include" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="AIEvents/GotoAIEvent.cpp" />
+		<Unit filename="AIEvents/GotoAIEvent.h" />
+		<Unit filename="AIEvents/GotoTargetAIEvent.cpp" />
+		<Unit filename="AIEvents/GotoTargetAIEvent.h" />
+		<Unit filename="AIEvents/NamedEventAIEvent.cpp" />
+		<Unit filename="AIEvents/NamedEventAIEvent.h" />
+		<Unit filename="AIEvents/TimerAIEvent.cpp" />
+		<Unit filename="AIEvents/TimerAIEvent.h" />
+		<Unit filename="AIEvents/TraversalAIEvent.cpp" />
+		<Unit filename="AIEvents/TraversalAIEvent.h" />
+		<Unit filename="AI/BoundingShapes.cpp" />
+		<Unit filename="AI/BoundingShapes.h" />
+		<Unit filename="AI/Brain.cpp" />
+		<Unit filename="AI/Brain.h" />
+		<Unit filename="AI/PathFinder.cpp" />
+		<Unit filename="AI/PathFinder.h" />
+		<Unit filename="AI/Ray2.cpp" />
+		<Unit filename="AI/Ray2.h" />
+		<Unit filename="AI/Sentient.cpp" />
+		<Unit filename="AI/Sentient.h" />
+		<Unit filename="AI/SpatialGraph.cpp" />
+		<Unit filename="AI/SpatialGraph.h" />
+		<Unit filename="AI/Traversal.cpp" />
+		<Unit filename="AI/Traversal.h" />
+		<Unit filename="AI/stlastar.h" />
+		<Unit filename="Actors/Actor.cpp" />
+		<Unit filename="Actors/Actor.h" />
+		<Unit filename="Actors/FullScreenActor.cpp" />
+		<Unit filename="Actors/FullScreenActor.h" />
+		<Unit filename="Actors/GridActor.cpp" />
+		<Unit filename="Actors/GridActor.h" />
+		<Unit filename="Actors/HUDActor.cpp" />
+		<Unit filename="Actors/HUDActor.h" />
+		<Unit filename="Actors/ParticleActor.cpp" />
+		<Unit filename="Actors/ParticleActor.h" />
+		<Unit filename="Actors/PhysicsActor.cpp" />
+		<Unit filename="Actors/PhysicsActor.h" />
+		<Unit filename="Actors/TextActor.cpp" />
+		<Unit filename="Actors/TextActor.h" />
+		<Unit filename="Angel.h" />
+		<Unit filename="AngelConfig.h" />
+		<Unit filename="Infrastructure/Callback.h" />
+		<Unit filename="Infrastructure/Camera.cpp" />
+		<Unit filename="Infrastructure/Camera.h" />
+		<Unit filename="Infrastructure/Color.cpp" />
+		<Unit filename="Infrastructure/Color.h" />
+		<Unit filename="Infrastructure/Common.h" />
+		<Unit filename="Infrastructure/Console.cpp" />
+		<Unit filename="Infrastructure/Console.h" />
+		<Unit filename="Infrastructure/DebugDraw.h" />
+		<Unit filename="Infrastructure/GameManager.cpp" />
+		<Unit filename="Infrastructure/GameManager.h" />
+		<Unit filename="Infrastructure/Interval.h" />
+		<Unit filename="Infrastructure/LoadedVariable.h" />
+		<Unit filename="Infrastructure/Log.cpp" />
+		<Unit filename="Infrastructure/Log.h" />
+		<Unit filename="Infrastructure/Preferences.cpp" />
+		<Unit filename="Infrastructure/Preferences.h" />
+		<Unit filename="Infrastructure/Renderable.h" />
+		<Unit filename="Infrastructure/RenderableIterator.cpp" />
+		<Unit filename="Infrastructure/RenderableIterator.h" />
+		<Unit filename="Infrastructure/SoundDevice.cpp" />
+		<Unit filename="Infrastructure/SoundDevice.h" />
+		<Unit filename="Infrastructure/TagCollection.cpp" />
+		<Unit filename="Infrastructure/TagCollection.h" />
+		<Unit filename="Infrastructure/TextRendering.cpp" />
+		<Unit filename="Infrastructure/TextRendering.h" />
+		<Unit filename="Infrastructure/Textures.cpp" />
+		<Unit filename="Infrastructure/Textures.h" />
+		<Unit filename="Infrastructure/TuningVariable.cpp" />
+		<Unit filename="Infrastructure/TuningVariable.h" />
+		<Unit filename="Infrastructure/VecStructs.h" />
+		<Unit filename="Infrastructure/Vector2.cpp" />
+		<Unit filename="Infrastructure/Vector2.h" />
+		<Unit filename="Infrastructure/Vector3.cpp" />
+		<Unit filename="Infrastructure/Vector3.h" />
+		<Unit filename="Infrastructure/World.cpp" />
+		<Unit filename="Infrastructure/World.h" />
+		<Unit filename="Infrastructure/stdafx.cpp" />
+		<Unit filename="Infrastructure/stdafx.h" />
+		<Unit filename="Input/Controller.cpp" />
+		<Unit filename="Input/Controller.h" />
+		<Unit filename="Input/Input.cpp" />
+		<Unit filename="Input/Input.h" />
+		<Unit filename="Input/InputKeys.h" />
+		<Unit filename="Input/InputManager.cpp" />
+		<Unit filename="Input/InputManager.h" />
+		<Unit filename="Input/MobileSimulator.cpp" />
+		<Unit filename="Input/MobileSimulator.h" />
+		<Unit filename="Input/MouseInput.cpp" />
+		<Unit filename="Input/MouseInput.h" />
+		<Unit filename="Input/MultiTouch.cpp" />
+		<Unit filename="Input/MultiTouch.h" />
+		<Unit filename="Messaging/Message.cpp" />
+		<Unit filename="Messaging/Message.h" />
+		<Unit filename="Messaging/Switchboard.cpp" />
+		<Unit filename="Messaging/Switchboard.h" />
+		<Unit filename="Scripting/EngineScripts/autocomplete.lua" />
+		<Unit filename="Scripting/EngineScripts/conf_load.lua" />
+		<Unit filename="Scripting/EngineScripts/pref_load.lua" />
+		<Unit filename="Scripting/EngineScripts/start.lua" />
+		<Unit filename="Scripting/EngineScripts/sugar.lua" />
+		<Unit filename="Scripting/EngineScripts/util.lua" />
+		<Unit filename="Scripting/Interfaces/actor.i" />
+		<Unit filename="Scripting/Interfaces/angel.i" />
+		<Unit filename="Scripting/Interfaces/camera.i" />
+		<Unit filename="Scripting/Interfaces/color.i" />
+		<Unit filename="Scripting/Interfaces/console.i" />
+		<Unit filename="Scripting/Interfaces/controller.i" />
+		<Unit filename="Scripting/Interfaces/log.i" />
+		<Unit filename="Scripting/Interfaces/messaging.i" />
+		<Unit filename="Scripting/Interfaces/mouse.i" />
+		<Unit filename="Scripting/Interfaces/multitouch.i" />
+		<Unit filename="Scripting/Interfaces/particles.i" />
+		<Unit filename="Scripting/Interfaces/physics_actor.i" />
+		<Unit filename="Scripting/Interfaces/preferences.i" />
+		<Unit filename="Scripting/Interfaces/renderable.i" />
+		<Unit filename="Scripting/Interfaces/sound.i" />
+		<Unit filename="Scripting/Interfaces/text_actor.i" />
+		<Unit filename="Scripting/Interfaces/tuning.i" />
+		<Unit filename="Scripting/Interfaces/vectors.i" />
+		<Unit filename="Scripting/Interfaces/world.i" />
+		<Unit filename="Scripting/LuaConsole.cpp" />
+		<Unit filename="Scripting/LuaConsole.h" />
+		<Unit filename="Scripting/LuaModule.cpp" />
+		<Unit filename="Scripting/LuaModule.h" />
+		<Unit filename="UI/GwenRenderer.cpp" />
+		<Unit filename="UI/GwenRenderer.h" />
+		<Unit filename="UI/UserInterface.cpp" />
+		<Unit filename="UI/UserInterface.h" />
+		<Unit filename="Util/DrawUtil.cpp" />
+		<Unit filename="Util/DrawUtil.h" />
+		<Unit filename="Util/FileUtil.cpp" />
+		<Unit filename="Util/FileUtil.h" />
+		<Unit filename="Util/MathUtil.cpp" />
+		<Unit filename="Util/MathUtil.h" />
+		<Unit filename="Util/StringUtil.cpp" />
+		<Unit filename="Util/StringUtil.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

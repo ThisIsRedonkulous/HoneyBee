@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="IntroGame" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug Win32">
+				<Option output="IntroGame" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add option="-DFTGL_LIBRARY_STATIC" />
+					<Add option="-DANGEL_DEBUG" />
+					<Add directory="$(DXSDK_DIR)include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/freetype-2.4.8/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/FTGL/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/DevIL-SDK-1.7.8/win/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/glfw-3.0.3/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/Box2D-2.2.1" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/lua-5.2.1/src" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/FMOD/inc" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/openal-soft-1.15-bin/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/libogg-1.3.0/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/libvorbis-1.3.2/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/DemoScreens" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/" />
+				</Compiler>
+				<Linker>
+					<Add library="libpng.lib" />
+					<Add library="zlib.lib" />
+					<Add library="DevIL.lib" />
+					<Add library="ILU.lib" />
+					<Add library="ILUT.lib" />
+					<Add library="opengl32.lib" />
+					<Add library="glu32.lib" />
+					<Add library="fmodex_vc.lib" />
+					<Add library="_GLFW.lib" />
+					<Add library="_FTGL.lib" />
+					<Add library="freetype248_D.lib" />
+					<Add library="Box2D.lib" />
+					<Add library="Angel.lib" />
+					<Add library="Lua.lib" />
+					<Add library="libOpenAL32.dll.a" />
+					<Add library="_libogg.lib" />
+					<Add library="_libvorbis.lib" />
+					<Add library="_libvorbisfile.lib" />
+					<Add library="gwen_staticd.lib" />
+					<Add directory="$(DXSDK_DIR)lib/x86" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/DevIL-SDK-1.7.8/win/lib" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/FMOD/lib" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/glfw-3.0.3/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/FTGL/win32_vcpp/build/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/freetype-2.4.8/objs/win32/vc2010/" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/Box2D-2.2.1/Build/vs2010/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/lua-5.2.1/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/openal-soft-1.15-bin/lib/Win32" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/libogg-1.3.0/win32/VS2010/Win32/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/libvorbis-1.3.2/win32/VS2010/libvorbis/Win32/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/libvorbis-1.3.2/win32/VS2010/libvorbisfile/Win32/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/gwen/lib/windows/vs2010" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/$(Configuration)" />
+				</Linker>
+			</Target>
+			<Target title="Release Win32">
+				<Option output="IntroGame" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_CONSOLE" />
+					<Add option="-DFTGL_LIBRARY_STATIC" />
+					<Add option="-DANGEL_RELEASE" />
+					<Add directory="$(DXSDK_DIR)include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/freetype-2.4.8/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/FTGL/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/DevIL-SDK-1.7.8/win/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/glfw-3.0.3/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/Box2D-2.2.1" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/lua-5.2.1/src" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/FMOD/inc" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/openal-soft-1.15-bin/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/libogg-1.3.0/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/libvorbis-1.3.2/include" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/DemoScreens" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/" />
+				</Compiler>
+				<Linker>
+					<Add library="libpng.lib" />
+					<Add library="zlib.lib" />
+					<Add library="DevIL.lib" />
+					<Add library="ILU.lib" />
+					<Add library="ILUT.lib" />
+					<Add library="opengl32.lib" />
+					<Add library="glu32.lib" />
+					<Add library="fmodex_vc.lib" />
+					<Add library="_GLFW.lib" />
+					<Add library="_FTGL.lib" />
+					<Add library="freetype248.lib" />
+					<Add library="Box2D.lib" />
+					<Add library="Angel.lib" />
+					<Add library="Lua.lib" />
+					<Add library="libOpenAL32.dll.a" />
+					<Add library="_libogg.lib" />
+					<Add library="_libvorbis.lib" />
+					<Add library="_libvorbisfile.lib" />
+					<Add library="gwen_static.lib" />
+					<Add directory="$(DXSDK_DIR)lib/x86" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/DevIL-SDK-1.7.8/win/lib" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/FMOD/lib" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/glfw-3.0.3/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/FTGL/win32_vcpp/build/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/freetype-2.4.8/objs/win32/vc2010/" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/Box2D-2.2.1/Build/vs2010/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/lua-5.2.1/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/openal-soft-1.15-bin/lib/Win32" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/libogg-1.3.0/win32/VS2010/Win32/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/libvorbis-1.3.2/win32/VS2010/libvorbis/Win32/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/libvorbis-1.3.2/win32/VS2010/libvorbisfile/Win32/$(Configuration)" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/Libraries/gwen/lib/windows/vs2010" />
+					<Add directory="C:/Users/Miller/workspace/HoneyBee/Angel-3.2/Code/IntroGame/../Angel/$(Configuration)" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="../Angel/Scripting/Interfaces/AngelLuaWrappingIntroGame.cpp" />
+		<Unit filename="Config/ActorDef/demo_actors.lua" />
+		<Unit filename="Config/Level/collisionlevel_demo.lua" />
+		<Unit filename="Config/Level/layeredcollisionlevel_demo.lua" />
+		<Unit filename="Config/Level/level_demo.lua" />
+		<Unit filename="Config/Level/maze.lua" />
+		<Unit filename="Config/defaults.lua" />
+		<Unit filename="Config/input_bindings.ini" />
+		<Unit filename="Config/tuning.lua" />
+		<Unit filename="DemoGameManager.cpp" />
+		<Unit filename="DemoGameManager.h" />
+		<Unit filename="DemoScreens/DemoScreenBindingInstructions.cpp" />
+		<Unit filename="DemoScreens/DemoScreenBindingInstructions.h" />
+		<Unit filename="DemoScreens/DemoScreenByeBye.cpp" />
+		<Unit filename="DemoScreens/DemoScreenByeBye.h" />
+		<Unit filename="DemoScreens/DemoScreenConsole.cpp" />
+		<Unit filename="DemoScreens/DemoScreenConsole.h" />
+		<Unit filename="DemoScreens/DemoScreenControllerInstructions.cpp" />
+		<Unit filename="DemoScreens/DemoScreenControllerInstructions.h" />
+		<Unit filename="DemoScreens/DemoScreenDefFile.cpp" />
+		<Unit filename="DemoScreens/DemoScreenDefFile.h" />
+		<Unit filename="DemoScreens/DemoScreenImageMap.cpp" />
+		<Unit filename="DemoScreens/DemoScreenImageMap.h" />
+		<Unit filename="DemoScreens/DemoScreenInstructions.cpp" />
+		<Unit filename="DemoScreens/DemoScreenInstructions.h" />
+		<Unit filename="DemoScreens/DemoScreenIntervals.cpp" />
+		<Unit filename="DemoScreens/DemoScreenIntervals.h" />
+		<Unit filename="DemoScreens/DemoScreenLayeredCollisionLevelFile.cpp" />
+		<Unit filename="DemoScreens/DemoScreenLayeredCollisionLevelFile.h" />
+		<Unit filename="DemoScreens/DemoScreenLevelFile.cpp" />
+		<Unit filename="DemoScreens/DemoScreenLevelFile.h" />
+		<Unit filename="DemoScreens/DemoScreenMessagePassing.cpp" />
+		<Unit filename="DemoScreens/DemoScreenMessagePassing.h" />
+		<Unit filename="DemoScreens/DemoScreenMobileSimulator.cpp" />
+		<Unit filename="DemoScreens/DemoScreenMobileSimulator.h" />
+		<Unit filename="DemoScreens/DemoScreenMovingActor.cpp" />
+		<Unit filename="DemoScreens/DemoScreenMovingActor.h" />
+		<Unit filename="DemoScreens/DemoScreenMultipleControllers.cpp" />
+		<Unit filename="DemoScreens/DemoScreenMultipleControllers.h" />
+		<Unit filename="DemoScreens/DemoScreenParticleActors.cpp" />
+		<Unit filename="DemoScreens/DemoScreenParticleActors.h" />
+		<Unit filename="DemoScreens/DemoScreenPathfinding.cpp" />
+		<Unit filename="DemoScreens/DemoScreenPathfinding.h" />
+		<Unit filename="DemoScreens/DemoScreenPhysicsActor.cpp" />
+		<Unit filename="DemoScreens/DemoScreenPhysicsActor.h" />
+		<Unit filename="DemoScreens/DemoScreenRenderLayers.cpp" />
+		<Unit filename="DemoScreens/DemoScreenRenderLayers.h" />
+		<Unit filename="DemoScreens/DemoScreenSimpleActor.cpp" />
+		<Unit filename="DemoScreens/DemoScreenSimpleActor.h" />
+		<Unit filename="DemoScreens/DemoScreenStart.cpp" />
+		<Unit filename="DemoScreens/DemoScreenStart.h" />
+		<Unit filename="DemoScreens/DemoScreenTuningVariables.cpp" />
+		<Unit filename="DemoScreens/DemoScreenTuningVariables.h" />
+		<Unit filename="DemoScreens/DemoScreenUI.cpp" />
+		<Unit filename="DemoScreens/DemoScreenUI.h" />
+		<Unit filename="Documentation/Attributions.txt" />
+		<Unit filename="Documentation/GameInfo.txt" />
+		<Unit filename="Logs/LogFile.log" />
+		<Unit filename="Main.cpp" />
+		<Unit filename="platforms/win/IntroGame.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="platforms/win/angel.ico" />
+		<Unit filename="platforms/win/resource.h" />
+		<Unit filename="stdafx.cpp" />
+		<Unit filename="stdafx.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

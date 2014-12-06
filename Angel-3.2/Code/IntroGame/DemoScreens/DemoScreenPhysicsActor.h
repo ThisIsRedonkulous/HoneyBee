@@ -30,7 +30,9 @@
 #pragma once
 
 #include "DemoGameManager.h"
-
+#include "stdafx.h"
+#include <ctime>
+#include <cstring>
 
 class DemoScreenPhysicsActor : public DemoScreen
 {
@@ -41,7 +43,9 @@ public:
 	virtual void Update(float dt);
 
 private:
-	TextActor* t;
+	TextActor* t, *score, *timer;
+	int seconds;
+	time_t beginTime, currentTime;
 	PhysicsActor *p1;
 	PhysicsActor *p2;
 };

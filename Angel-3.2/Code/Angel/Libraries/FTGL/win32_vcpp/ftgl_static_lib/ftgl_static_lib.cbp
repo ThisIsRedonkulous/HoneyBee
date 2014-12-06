@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="declspec" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug Win32">
+				<Option output="ftgl_static_lib" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-D_DEBUG" />
+					<Add option="-DWIN32" />
+					<Add option="-D_LIB" />
+					<Add option="-DFTGL_LIBRARY_STATIC" />
+					<Add directory="../../../freetype-2.4.8/include" />
+					<Add directory="../../include" />
+				</Compiler>
+			</Target>
+			<Target title="Debug MT Win32">
+				<Option output="ftgl_static_lib" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-D_DEBUG" />
+					<Add option="-DWIN32" />
+					<Add option="-D_LIB" />
+					<Add option="-DFTGL_LIBRARY_STATIC" />
+					<Add directory="../../../freetype-2.4.8/include" />
+					<Add directory="../../include" />
+				</Compiler>
+			</Target>
+			<Target title="Release Win32">
+				<Option output="ftgl_static_lib" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DNDEBUG" />
+					<Add option="-DWIN32" />
+					<Add option="-D_LIB" />
+					<Add option="-DFTGL_LIBRARY_STATIC" />
+					<Add directory="../../../freetype-2.4.8/include" />
+					<Add directory="../../include" />
+				</Compiler>
+			</Target>
+			<Target title="Release MT Win32">
+				<Option output="ftgl_static_lib" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-DNDEBUG" />
+					<Add option="-DWIN32" />
+					<Add option="-D_LIB" />
+					<Add option="-DFTGL_LIBRARY_STATIC" />
+					<Add directory="../../../freetype-2.4.8/include" />
+					<Add directory="../../include" />
+				</Compiler>
+			</Target>
+		</Build>
+		<Unit filename="../../include/FTBBox.h" />
+		<Unit filename="../../include/FTBitmapGlyph.h" />
+		<Unit filename="../../include/FTCharToGlyphIndexMap.h" />
+		<Unit filename="../../include/FTCharmap.h" />
+		<Unit filename="../../include/FTContour.h" />
+		<Unit filename="../../include/FTExtrdGlyph.h" />
+		<Unit filename="../../include/FTFace.h" />
+		<Unit filename="../../include/FTFont.h" />
+		<Unit filename="../../include/FTGL.h" />
+		<Unit filename="../../include/FTGLBitmapFont.h" />
+		<Unit filename="../../include/FTGLExtrdFont.h" />
+		<Unit filename="../../include/FTGLOutlineFont.h" />
+		<Unit filename="../../include/FTGLPixmapFont.h" />
+		<Unit filename="../../include/FTGLPolygonFont.h" />
+		<Unit filename="../../include/FTGLTextureFont.h" />
+		<Unit filename="../../include/FTGlyph.h" />
+		<Unit filename="../../include/FTGlyphContainer.h" />
+		<Unit filename="../../include/FTLibrary.h" />
+		<Unit filename="../../include/FTList.h" />
+		<Unit filename="../../include/FTOutlineGlyph.h" />
+		<Unit filename="../../include/FTPixmapGlyph.h" />
+		<Unit filename="../../include/FTPoint.h" />
+		<Unit filename="../../include/FTPolyGlyph.h" />
+		<Unit filename="../../include/FTSize.h" />
+		<Unit filename="../../include/FTTextureGlyph.h" />
+		<Unit filename="../../include/FTVector.h" />
+		<Unit filename="../../include/FTVectoriser.h" />
+		<Unit filename="../../src/FTBitmapGlyph.cpp" />
+		<Unit filename="../../src/FTCharmap.cpp" />
+		<Unit filename="../../src/FTContour.cpp" />
+		<Unit filename="../../src/FTExtrdGlyph.cpp" />
+		<Unit filename="../../src/FTFace.cpp" />
+		<Unit filename="../../src/FTFont.cpp" />
+		<Unit filename="../../src/FTGLBitmapFont.cpp" />
+		<Unit filename="../../src/FTGLExtrdFont.cpp" />
+		<Unit filename="../../src/FTGLOutlineFont.cpp" />
+		<Unit filename="../../src/FTGLPixmapFont.cpp" />
+		<Unit filename="../../src/FTGLPolygonFont.cpp" />
+		<Unit filename="../../src/FTGLTextureFont.cpp" />
+		<Unit filename="../../src/FTGlyph.cpp" />
+		<Unit filename="../../src/FTGlyphContainer.cpp" />
+		<Unit filename="../../src/FTLibrary.cpp" />
+		<Unit filename="../../src/FTOutlineGlyph.cpp" />
+		<Unit filename="../../src/FTPixmapGlyph.cpp" />
+		<Unit filename="../../src/FTPoint.cpp" />
+		<Unit filename="../../src/FTPolyGlyph.cpp" />
+		<Unit filename="../../src/FTSize.cpp" />
+		<Unit filename="../../src/FTTextureGlyph.cpp" />
+		<Unit filename="../../src/FTVectoriser.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
