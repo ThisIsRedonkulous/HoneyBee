@@ -43,8 +43,8 @@ void DemoScreenPhysicsActor::Start()
 	p1->SetColor(1.0f, 0.0f, 1.0f);
 
 	//...but with a little bit of magic pixie dust
-	p1->SetDensity(0.8f);
-	p1->SetFriction(0.5f);
+	p1->SetDensity(0.1f);
+	p1->SetFriction(0.9f);
 	p1->SetRestitution(0.7f);
 	p1->SetShapeType(PhysicsActor::SHAPETYPE_BOX);
 	p1->InitPhysics(); // Note that none of the actor's physics are being 
@@ -59,13 +59,13 @@ void DemoScreenPhysicsActor::Start()
 	p2->SetSize(30.0f, 5.0f);
 	p2->SetColor(0.0f, 1.0f, 0.0f);
 	p2->SetDensity(0.0f); //no density (static)
-	p2->SetFriction(0.1f); //little friction
+	p2->SetFriction(0.9f); //little friction
 	p2->InitPhysics(); 
 
 	//NOTE: After you call InitPhysics, you can't directly set an Actor's
 	// position or rotation -- you've turned those over to the physics engine.
 	// You can't change the size, either, since that would mess up the simulation.
-
+	vector = new Vector2(0, 70.0f);
 	theWorld.Add(p1);
 	theWorld.Add(p2);
 
@@ -92,9 +92,28 @@ void DemoScreenPhysicsActor::Start()
 
 void DemoScreenPhysicsActor::Update(float dt)
 {
-	if ((theController.IsConnected() && theController.IsBButtonDown()) || (theInput.IsKeyDown('b')))
+	p1->StopRotation();
+	if (theInput.IsKeyDown('d'))
+	{
+	//	Vector2 *temp = vector;
+		vector->X += .1*dt;
+		p1->ApplyTorque(.1);
+		//vector = &(vector->Rotate(*vector, 3.1415926));
+		//std::cout << "x= "<< vector->X << "\ny= " << vector->Y;
+		//free(temp);
+	}
+	if (theInput.IsKeyDown('a'))
+	{
+	//	Vector2 *temp = vector;
+		vector->X -= .1*dt;
+		p1->ApplyTorque(.1);
+		//vector = &(vector->Rotate(*vector, -(.01*dt)));
+		//std::cout << "x= " << vector->X << "\ny= " << vector->Y << "\n";
+	//	free(temp);
+	}
+	if (theInput.IsKeyDown('w'))
 	{
 		//punch it upwards
-		p1->ApplyForce(Vector2(0, 700.0f) * dt, Vector2());
+		p1->ApplyForce(*vector * dt, Vector2());
 	}
 }

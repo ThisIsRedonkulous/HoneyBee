@@ -255,6 +255,11 @@ void PhysicsActor::SetRotation(float rotation)
 		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetRotation()");
 }
 
+void PhysicsActor::StopRotation()
+{
+	if (_physBody != NULL)
+	_physBody->SetAngularVelocity(0);
+}
 void PhysicsActor::_syncPosRot(float x, float y, float rotation)
 {
 	_position.X = x;

@@ -221,6 +221,10 @@ public:
 	 * @param impulse The strength of the impulse to apply. 
 	 * @param point 
 	 */
+	void StopRotation();
+		/**
+		* Sets AngularVelocity to 0
+		*/
 	void ApplyLinearImpulse(const Vector2& impulse, const Vector2& point);
 	
 	/**
