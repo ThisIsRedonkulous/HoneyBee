@@ -29,9 +29,9 @@
 
 #include "stdafx.h"
 #include "DemoScreenPhysicsActor.h"
-#include <ctime>
-#include <cstring>
+#include <cstdlib>
 #include <utils.h>
+#include "Actors\FlowerActor.h"
 //might need to hook it up with a file path
 DemoScreenPhysicsActor::DemoScreenPhysicsActor()
 {
@@ -39,24 +39,21 @@ DemoScreenPhysicsActor::DemoScreenPhysicsActor()
 
 void DemoScreenPhysicsActor::Start()
 {
+	points = 0;
+	questionTime = false;
+	theSwitchboard.SubscribeTo(this, "QuestionTime");
 	p1 = new PhysicsActor();
 	//PhysicsActors have all the same attributes as regular ones...
 	p1->SetSize(1.0f);
 	//p1->SetColor(1.0f, 0.0f, 1.0f);
-
 	//...but with a little bit of magic pixie dust
-<<<<<<< HEAD
-	p1->SetDensity(0.8f);
-	p1->SetFriction(0.5f);
-	p1->SetRestitution(0.3f);
-=======
 	p1->SetDensity(0.1f);
-	p1->SetFriction(0.9f);
-	p1->SetRestitution(0.7f);
->>>>>>> origin/master
+	p1->SetFriction(0.5f);
+	p1->SetRestitution(0.0f);
 	p1->SetShapeType(PhysicsActor::SHAPETYPE_BOX);
+	p1->SetPosition(*(new Vector2(5, 5)));
 	//added this image
-	p1->SetSprite("Resources/Images/bee/png");
+	p1->SetSprite("Resources/Images/bee.png");
 	p1->InitPhysics(); // Note that none of the actor's physics are being
 	                   //  simulated until this call.
 
@@ -69,25 +66,29 @@ void DemoScreenPhysicsActor::Start()
 	p2->SetSize(30.0f, 5.0f);
 	p2->SetColor(0.0f, 1.0f, 0.0f);
 	p2->SetDensity(0.0f); //no density (static)
-<<<<<<< HEAD
-	p2->SetFriction(0.1f); //little friction
-	p2->InitPhysics();
-=======
 	p2->SetFriction(0.9f); //little friction
 	p2->InitPhysics(); 
->>>>>>> origin/master
-
+	
+	flower = new FlowerActor("ENGLISH MOTHERFUCKER", "Flower");
+	flower->SetPosition(7, 7);
+	flower->SetSize(2, 2);
+	flower->SetColor(0, 1, 0);
+	flower->SetShapeType(PhysicsActor::SHAPETYPE_BOX);
+	flower->SetIsSensor(true);
+	flower->SetDensity(0);
+	flower->InitPhysics();
 	//NOTE: After you call InitPhysics, you can't directly set an Actor's
 	// position or rotation -- you've turned those over to the physics engine.
 	// You can't change the size, either, since that would mess up the simulation.
 	vector = new Vector2(0, 70.0f);
 	theWorld.Add(p1);
 	theWorld.Add(p2);
-
-	time(&beginTime);
-	score = new TextActor("Console", 0);
-	timer = new TextActor("Console", 120);
-	seconds = 0;
+	theWorld.Add(flower);
+	score = new TextActor("Console", "0");
+	timer = new TextActor("Console", "0");
+	score->SetPosition(*(new Vector2(5,5)));
+	theWorld.Add(score);
+	theWorld.Add(timer);
 	//Demo housekeeping below this point.
 	#pragma region Demo Housekeeping
 	t = new TextActor("Console", "These Actors use physics. Press [B].\n\n\n\n(Yes, the ground is an Actor.)");
@@ -99,55 +100,97 @@ void DemoScreenPhysicsActor::Start()
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc);
 	_objects.push_back(fileLoc);
+	_objects.push_back(score);
+	_objects.push_back(timer);
 	_objects.push_back(t);
+	_objects.push_back(flower);
 	_objects.push_back(p1);
 	_objects.push_back(p2);
 	#pragma endregion
 }
-
 void DemoScreenPhysicsActor::Update(float dt)
 {
-<<<<<<< HEAD
-	time(&currentTime);
-	if (seconds != currentTime-beginTime)
-	{
-		seconds = currentTime-beginTime;
-		//if (seconds > 120)
-			//done();
-		char p[10] = {0};
-		timer->SetDisplayString(itoa(currentTime - beginTime, p));
-=======
+		if (theWorld.GetCurrentTimeSeconds() > 120)
+		theWorld.StopGame();
+		char p[10] = { 0 };
+		itoa(120 - theWorld.GetCurrentTimeSeconds(), p,10);
+		timer->SetDisplayString(p);
 	p1->StopRotation();
-	if (theInput.IsKeyDown('d'))
+	if (questionTime)
 	{
-	//	Vector2 *temp = vector;
-		vector->X += .1*dt;
-		p1->ApplyTorque(.1);
-		//vector = &(vector->Rotate(*vector, 3.1415926));
-		//std::cout << "x= "<< vector->X << "\ny= " << vector->Y;
-		//free(temp);
+		if (theInput.IsKeyDown('1'))
+		{
+			flower->answered();
+			if (flower->answer)
+			{
+				score->SetDisplayString("CORRECT MOTHERFUCKER");
+			}
+			else
+				score->SetDisplayString("WRONG MOTHERFUCKER");
+			questionTime = false;
+			p1->unfreeze();
+		}
+		else if (theInput.IsKeyDown('2'))
+		{
+			flower->answered();
+			if (flower->answer)
+			{
+				score->SetDisplayString("WRONG MOTHERFUCKER");
+			}
+			else
+				score->SetDisplayString("CORRECT MOTHERFUCKER");
+
+			questionTime = false;
+			p1->unfreeze();
+		}
 	}
-	if (theInput.IsKeyDown('a'))
+	else
 	{
-	//	Vector2 *temp = vector;
-		vector->X -= .1*dt;
-		p1->ApplyTorque(.1);
-		//vector = &(vector->Rotate(*vector, -(.01*dt)));
-		//std::cout << "x= " << vector->X << "\ny= " << vector->Y << "\n";
-	//	free(temp);
->>>>>>> origin/master
+		if (theInput.IsKeyDown('d'))
+		{
+			//	Vector2 *temp = vector;
+			if (p1->getVelocity().x < 0)
+			{
+				vector->X += 5 * dt;
+			}
+			else
+			{
+				vector->X += 5 * dt;
+			}
+			std::cout << p1->GetRotation() << "\n";
+			if (p1->GetRotation()>-45)
+				p1->ApplyTorque(-.1);
+			//vector = &(vector->Rotate(*vector, 3.1415926));
+			//std::cout << "x= "<< vector->X << "\ny= " << vector->Y;
+			//free(temp);
+		}
+		if (theInput.IsKeyDown('a'))
+		{
+			//	Vector2 *temp = vector;
+			if (p1->getVelocity().x > 0)
+			{
+				vector->X -= 5 * dt;
+			}
+			else
+			{
+				vector->X -= 5 * dt;
+			}
+			if (p1->GetRotation() < 45)
+				p1->ApplyTorque(.1);
+			//vector = &(vector->Rotate(*vector, -(.01*dt)));
+			//std::cout << "x= " << vector->X << "\ny= " << vector->Y << "\n";
+			//	free(temp);
+		}
+		if (theInput.IsKeyDown('w'))
+		{
+			//punch it upwards
+			p1->ApplyForce(*vector * dt, Vector2());
+		}
 	}
-	if (theInput.IsKeyDown('w'))
-	{
-		//punch it upwards
-		p1->ApplyForce(*vector * dt, Vector2());
-	}
-	if (theInput.IsKeyDown('d'))
-	{
-		p1->ApplyForce(Vector2(), Vector2(2,0)*dt);
-	}
-	if (theInput.IsKeyDown('a'))
-	{
-		p1->ApplyForce(Vector2(), Vector2(-2,0)*dt);
-	}
+}
+void DemoScreenPhysicsActor::ReceiveMessage(Message* message)
+{
+	questionTime = true;
+	score->SetDisplayString(((TypedMessage<char*>*)message)->GetValue());
+	p1->freeze();
 }

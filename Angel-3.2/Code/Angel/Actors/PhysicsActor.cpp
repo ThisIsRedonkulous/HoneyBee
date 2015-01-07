@@ -69,6 +69,15 @@ void PhysicsActor::SetDensity(float density)
 		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetDensity()");
 }
 
+void PhysicsActor::freeze()
+{
+	_physBody->SetActive(false);
+}
+
+void PhysicsActor::unfreeze()
+{
+	_physBody->SetActive(true);
+}
 void PhysicsActor::SetFriction(float friction)
 {
 	if (_physBody == NULL)
@@ -235,7 +244,7 @@ void PhysicsActor::SetPosition(float x, float y)
 {
 	if (_physBody == NULL)
 		Actor::SetPosition(x, y);
-	else
+	else 
 		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetPosition()");
 }
 
@@ -270,4 +279,7 @@ void PhysicsActor::_syncPosRot(float x, float y, float rotation)
 	while (_rotation < -180.f)
 		_rotation += 360.f;
 }
-
+b2Vec2 PhysicsActor::getVelocity()
+{
+	return _physBody->GetLinearVelocity();
+}

@@ -30,23 +30,24 @@
 #pragma once
 
 #include "DemoGameManager.h"
+#include <cstdlib>
 #include "stdafx.h"
-#include <ctime>
 #include <cstring>
-
-class DemoScreenPhysicsActor : public DemoScreen
+#include "Actors\FlowerActor.h"
+class DemoScreenPhysicsActor : public DemoScreen, public MessageListener
 {
 public:
 	DemoScreenPhysicsActor();
-
+	void ReceiveMessage(Message* message);
 	virtual void Start();
 	virtual void Update(float dt);
 
 private:
-	TextActor* t, *score, *timer;
-	int seconds;
-	time_t beginTime, currentTime;
+	TextActor *t, *score, *timer;
+	int points;
+	bool questionTime;
 	PhysicsActor *p1;
 	PhysicsActor *p2;
+	FlowerActor *flower;
 	Vector2 *vector;
 };

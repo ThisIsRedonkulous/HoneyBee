@@ -225,6 +225,19 @@ public:
 		/**
 		* Sets AngularVelocity to 0
 		*/
+	b2Vec2 getVelocity();
+	/**
+	* Returns the velocity
+	*/
+
+	void freeze();
+		/**
+		* stops this bitch in place
+		*/
+	void unfreeze();
+	/**
+	* unstops this bitch in place
+	*/
 	void ApplyLinearImpulse(const Vector2& impulse, const Vector2& point);
 	
 	/**

@@ -1,3 +1,3 @@
 #include <stdio.h>
 
-char* itoa(int i, char b[]);
+//char* itoa(int i, char b[]);

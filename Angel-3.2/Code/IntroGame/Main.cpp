@@ -43,6 +43,7 @@ int main(int argc, char* argv[])
 	//		bool fullScreen			default: false
 	theWorld.Initialize(1024, 768, "Angel Engine", false, false);
 
+	theWorld.SetSideBlockers(true, .7f);
 	//we're going to be using the built-in physics
 	theWorld.SetupPhysics();
 
