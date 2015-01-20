@@ -29,9 +29,12 @@
 
 #include "stdafx.h"
 #include "DemoScreenPhysicsActor.h"
+#include <stdio.h>
 #include <cstdlib>
 #include <utils.h>
 #include "Actors\FlowerActor.h"
+#include "HoneyBee\FlowerMessage.h"
+#include <cstring>
 //might need to hook it up with a file path
 DemoScreenPhysicsActor::DemoScreenPhysicsActor()
 {
@@ -39,8 +42,14 @@ DemoScreenPhysicsActor::DemoScreenPhysicsActor()
 
 void DemoScreenPhysicsActor::Start()
 {
-	points = 0;
+	loadFile(fopen("setup.txt", "r+"));
+	score = 0;
+	inc = 0;
+	incText = "0";
+	scoreText = "Score: 0";
+	incrementing = false;
 	questionTime = false;
+	displayTime();
 	theSwitchboard.SubscribeTo(this, "QuestionTime");
 	p1 = new PhysicsActor();
 	//PhysicsActors have all the same attributes as regular ones...
@@ -56,90 +65,97 @@ void DemoScreenPhysicsActor::Start()
 	p1->SetSprite("Resources/Images/bee.png");
 	p1->InitPhysics(); // Note that none of the actor's physics are being
 	                   //  simulated until this call.
-
+	theCamera.LockTo(p1, true, false, false);
 	//That's the basics of what we've exposed from Box2d. There's lots
 	//  more to it, though, and we encourage you to check out their
 	//  documentation. http://box2d.org
 
-	p2 = new PhysicsActor();
+	PhysicsActor *p2 = new PhysicsActor();
 	p2->SetPosition(0.0f, -11.0f);
 	p2->SetSize(30.0f, 5.0f);
 	p2->SetColor(0.0f, 1.0f, 0.0f);
-	p2->SetDensity(0.0f); //no density (static)
+	p2->SetDensity(0); //no density (static)
 	p2->SetFriction(0.9f); //little friction
 	p2->InitPhysics(); 
 	
-	flower = new FlowerActor("ENGLISH MOTHERFUCKER", "Flower");
-	flower->SetPosition(7, 7);
-	flower->SetSize(2, 2);
-	flower->SetColor(0, 1, 0);
-	flower->SetShapeType(PhysicsActor::SHAPETYPE_BOX);
-	flower->SetIsSensor(true);
-	flower->SetDensity(0);
-	flower->InitPhysics();
+	//PhysicsActor *p = (PhysicsActor*)PhysicsActor::Create("FlowerActor");
+	//std::cout << p->GetSize().X;
+	//FlowerActor *flower = (FlowerActor*)Actor::Create("FlowerActor");
+	//std::cout << flower->GetSize().X;
+	//FlowerActor *flower = new FlowerActor("123456789012345678901234567890123465789012345678901234567890", "Flower");
+	//flower->SetPosition(7, 7);
+	//flower->SetSize(2, 2);
+	//flower->SetColor(0, 1, 0);
+	//flower->SetIsSensor(true);
+	//flower->SetDensity(0);
+	//flower->SetShapeType(PhysicsActor::SHAPETYPE_BOX);
+	//flower->InitPhysics();
 	//NOTE: After you call InitPhysics, you can't directly set an Actor's
 	// position or rotation -- you've turned those over to the physics engine.
 	// You can't change the size, either, since that would mess up the simulation.
-	vector = new Vector2(0, 70.0f);
+	vector = new Vector2(0, 100.0f);
+	//theWorld.Add(flower);
 	theWorld.Add(p1);
 	theWorld.Add(p2);
-	theWorld.Add(flower);
-	score = new TextActor("Console", "0");
-	timer = new TextActor("Console", "0");
-	score->SetPosition(*(new Vector2(5,5)));
-	theWorld.Add(score);
-	theWorld.Add(timer);
+	HUDActor *act = new HUDActor();
 	//Demo housekeeping below this point.
+	startTime = theWorld.GetCurrentTimeSeconds();
 	#pragma region Demo Housekeeping
-	t = new TextActor("Console", "These Actors use physics. Press [B].\n\n\n\n(Yes, the ground is an Actor.)");
-	t->SetPosition(0.0f, 3.5f);
-	t->SetAlignment(TXT_Center);
-	theWorld.Add(t);
 	TextActor *fileLoc = new TextActor("ConsoleSmall", "DemoScreenPhysicsActor.cpp");
 	fileLoc->SetPosition(MathUtil::ScreenToWorld(5, 763));
 	fileLoc->SetColor(.3f, .3f, .3f);
 	theWorld.Add(fileLoc);
 	_objects.push_back(fileLoc);
-	_objects.push_back(score);
-	_objects.push_back(timer);
-	_objects.push_back(t);
-	_objects.push_back(flower);
+	//_objects.push_back(flower);
 	_objects.push_back(p1);
 	_objects.push_back(p2);
 	#pragma endregion
 }
 void DemoScreenPhysicsActor::Update(float dt)
 {
-		if (theWorld.GetCurrentTimeSeconds() > 120)
-		theWorld.StopGame();
-		char p[10] = { 0 };
-		itoa(120 - theWorld.GetCurrentTimeSeconds(), p,10);
-		timer->SetDisplayString(p);
+		if (theWorld.GetTimeSinceSeconds(startTime) > 5)
+		theSwitchboard.Broadcast(new Message("MoveForwards"));
+		displayTime();
+		displayScore();
 	p1->StopRotation();
+	if (incrementing)
+	{
+		if (slower == 0)
+		{
+			setScore(score + 1);
+			inc--;
+			slower = 32;
+			updateInc();
+			incrementing = inc != 0;
+		}
+		slower--;
+	}
 	if (questionTime)
 	{
+		displayQuestion();
 		if (theInput.IsKeyDown('1'))
 		{
-			flower->answered();
-			if (flower->answer)
+			curFlower->answered();
+			if (curFlower->answer)
 			{
-				score->SetDisplayString("CORRECT MOTHERFUCKER");
+				inc = 50;
+				slower = 2048;
+				updateInc();
+				incrementing = true;
 			}
-			else
-				score->SetDisplayString("WRONG MOTHERFUCKER");
 			questionTime = false;
 			p1->unfreeze();
 		}
 		else if (theInput.IsKeyDown('2'))
 		{
-			flower->answered();
-			if (flower->answer)
+			curFlower->answered();
+			if (!curFlower->answer)
 			{
-				score->SetDisplayString("WRONG MOTHERFUCKER");
+				inc = 50;
+				updateInc();
+				slower = 2048;
+				incrementing = true;
 			}
-			else
-				score->SetDisplayString("CORRECT MOTHERFUCKER");
-
 			questionTime = false;
 			p1->unfreeze();
 		}
@@ -148,16 +164,7 @@ void DemoScreenPhysicsActor::Update(float dt)
 	{
 		if (theInput.IsKeyDown('d'))
 		{
-			//	Vector2 *temp = vector;
-			if (p1->getVelocity().x < 0)
-			{
-				vector->X += 5 * dt;
-			}
-			else
-			{
-				vector->X += 5 * dt;
-			}
-			std::cout << p1->GetRotation() << "\n";
+			p1->ApplyForce(Vector2(50*dt, 0), Vector2(0.0));
 			if (p1->GetRotation()>-45)
 				p1->ApplyTorque(-.1);
 			//vector = &(vector->Rotate(*vector, 3.1415926));
@@ -167,14 +174,7 @@ void DemoScreenPhysicsActor::Update(float dt)
 		if (theInput.IsKeyDown('a'))
 		{
 			//	Vector2 *temp = vector;
-			if (p1->getVelocity().x > 0)
-			{
-				vector->X -= 5 * dt;
-			}
-			else
-			{
-				vector->X -= 5 * dt;
-			}
+			p1->ApplyForce(Vector2(-50*dt, 0), Vector2(0.0));
 			if (p1->GetRotation() < 45)
 				p1->ApplyTorque(.1);
 			//vector = &(vector->Rotate(*vector, -(.01*dt)));
@@ -190,7 +190,109 @@ void DemoScreenPhysicsActor::Update(float dt)
 }
 void DemoScreenPhysicsActor::ReceiveMessage(Message* message)
 {
+	FlowerMessage *mess = (FlowerMessage*)message;
+	question.clear();
+	question.append(mess->question);
 	questionTime = true;
-	score->SetDisplayString(((TypedMessage<char*>*)message)->GetValue());
+	curFlower = mess->flower;
 	p1->freeze();
+}
+void DemoScreenPhysicsActor::setScore(int i)
+{
+	scoreText.empty();
+	scoreText = "Score: ";
+	score = i;
+	char p[10] = { 0 };
+	_itoa_s(score, p, 10);
+	scoreText.append(p);
+}
+void DemoScreenPhysicsActor::updateInc()
+{
+	incText.clear();
+	incText.append("+");
+	char p[10] = { 0 };
+	_itoa_s(inc, p, 10);
+	incText.append(p);
+}
+void DemoScreenPhysicsActor::displayScore()
+{
+	DrawGameText(scoreText, "Console", theCamera.GetWindowWidth()-150, 50, 0);
+	if (incrementing)
+	{
+		DrawGameText(incText, "Console", theCamera.GetWindowWidth() - 78, 75, 0);
+	}
+}
+void DemoScreenPhysicsActor::displayTime()
+{
+	char p[15] = { 0 };
+	_itoa_s(120 - theWorld.GetTimeSinceSeconds(startTime), p, 10);
+	DrawGameText(p, "Console", 50, 50, 0);
+}
+void DemoScreenPhysicsActor::displayQuestion()
+{
+	DrawGameText(question, "Console", theCamera.GetWindowWidth() / 2 - question.length()*6, 100, 0);
+}
+void DemoScreenPhysicsActor::loadFile(FILE *infile)
+{
+	//std::cout << "loading";
+	int temp = 1, temp2 = 1, numStuff=0;
+	String s = "";
+	FlowerActor *f;
+	char *taco = new char[20];
+	if (infile == nullptr)
+		std::cout << "failed to load config.txt";
+	else
+	{
+		fscanf(infile, "%d", &numStuff);
+		//std::cout << numStuff;
+		for (int i = 0; i < numStuff; i++)
+		{
+			s.clear();
+			free(taco);
+			taco = new char[20];
+			//fprintf(infile, "fuck you");
+			fscanf(infile, "%s", taco);
+			while (*taco != '~')
+			{
+				s.append(taco);
+				s.append(" ");
+				free(taco);
+				taco = new char[30];
+				fscanf(infile, "%s", taco);
+			}
+			//std::cout << s << "\n";
+				f = new FlowerActor(s.c_str(), "Flower");
+				fscanf(infile, "%s", taco);
+				free(taco);
+				taco = new char[30];
+				fscanf(infile, "%d", &temp);
+				f->SetAnswer(temp);
+				fscanf(infile, "%s", taco);
+				free(taco);
+				taco = new char[30];
+				fscanf(infile, "%d", &temp);
+				fscanf(infile, "%d", &temp2);
+				//std::cout << "\nsize" << temp << " " << temp2;
+				f->SetSize(temp, temp2);
+				fscanf(infile, "%s", taco);
+				free(taco);
+				taco = new char[30];
+				fscanf(infile, "%d", &temp);
+				fscanf(infile, "%d", &temp2);
+				f->SetPosition(temp, temp2);
+				f->SetShapeType(PhysicsActor::SHAPETYPE_BOX);
+				f->SetDensity(0);
+				f->SetIsSensor(true);
+				fscanf(infile, "%s", taco);
+				free(taco);
+				taco = new char[30];
+				fscanf(infile, "%s", taco);
+				//std::cout << taco;
+				f->SetSprite(taco);
+				//std::cout << f->question;
+				f->InitPhysics();
+				_objects.push_back(f);
+				theWorld.Add(f);
+		}
+	}
 }

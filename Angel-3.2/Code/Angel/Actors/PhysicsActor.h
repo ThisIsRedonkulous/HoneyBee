@@ -221,23 +221,25 @@ public:
 	 * @param impulse The strength of the impulse to apply. 
 	 * @param point 
 	 */
+	/**
+	* Sets AngularVelocity to 0
+	*/
 	void StopRotation();
-		/**
-		* Sets AngularVelocity to 0
-		*/
-	b2Vec2 getVelocity();
+
 	/**
 	* Returns the velocity
 	*/
+	b2Vec2 getVelocity();
 
+	/**
+	* stops this bitch in place
+	*/
 	void freeze();
-		/**
-		* stops this bitch in place
-		*/
-	void unfreeze();
 	/**
 	* unstops this bitch in place
 	*/
+	void unfreeze();
+
 	void ApplyLinearImpulse(const Vector2& impulse, const Vector2& point);
 	
 	/**

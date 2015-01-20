@@ -31,29 +31,10 @@
 #include "DemoGameManager.h"
 
 #if !ANGEL_MOBILE
-	#include "DemoScreenStart.h"
-	#include "DemoScreenInstructions.h"
-	#include "DemoScreenSimpleActor.h"
-	#include "DemoScreenMovingActor.h"
-	#include "DemoScreenIntervals.h"
 	#include "DemoScreenPhysicsActor.h"
-	#include "DemoScreenDefFile.h"
-	#include "DemoScreenLevelFile.h"
-	#include "DemoScreenConsole.h"
-	#include "DemoScreenByeBye.h"
-	#include "DemoScreenRenderLayers.h"
-	#include "DemoScreenBindingInstructions.h"
-	#include "DemoScreenLayeredCollisionLevelFile.h"
-	#include "DemoScreenParticleActors.h"
-	#include "DemoScreenMessagePassing.h"
-	#include "DemoScreenMultipleControllers.h"
-	#include "DemoScreenControllerInstructions.h"
-	#include "DemoScreenTuningVariables.h"
-	#include "DemoScreenImageMap.h"
-	#include "DemoScreenPathfinding.h"
 	#include "DemoScreenUI.h"
 #endif
-
+#include "HoneyBee/HighScoreScreen.h"
 #include "DemoScreenMobileSimulator.h"
 
 DemoScreen::DemoScreen() {}
@@ -99,16 +80,10 @@ DemoGameManager::DemoGameManager()
 	#if ANGEL_MOBILE
 		_screens.push_back(new DemoScreenMobileSimulator());				// 0
 	#else
-		_screens.push_back(new DemoScreenPhysicsActor());					//12
-		_screens.push_back(new DemoScreenMessagePassing());					//13
-		_screens.push_back(new DemoScreenIntervals());						//14
-		_screens.push_back(new DemoScreenLayeredCollisionLevelFile());		//15
-		_screens.push_back(new DemoScreenConsole());						//16
-		_screens.push_back(new DemoScreenUI());								//17
-		_screens.push_back(new DemoScreenTuningVariables());				//18
-		_screens.push_back(new DemoScreenPathfinding());					//19
-		_screens.push_back(new DemoScreenImageMap());						//20
-		_screens.push_back(new DemoScreenByeBye());							//21
+	_screens.push_back(new HighScoreScreen());								//17
+	_screens.push_back(new DemoScreenPhysicsActor());					//12
+	_screens.push_back(new HighScoreScreen());								//17
+	_screens.push_back(new HighScoreScreen());								//17
 	#endif
 
 	unsigned int startingIndex = 0;

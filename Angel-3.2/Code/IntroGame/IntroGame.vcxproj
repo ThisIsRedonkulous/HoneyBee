@@ -170,6 +170,8 @@ cd ..\Tools\BuildScripts\
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Actors\FlowerActor.cpp" />
+    <ClCompile Include="HoneyBee\FlowerMessage.cpp" />
+    <ClCompile Include="HoneyBee\HighScoreScreen.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -203,7 +205,10 @@ cd ..\Tools\BuildScripts\
     <ResourceCompile Include="platforms\win\IntroGame.rc" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Actors\BeeActor.h" />
     <ClInclude Include="Actors\FlowerActor.h" />
+    <ClInclude Include="HoneyBee\FlowerMessage.h" />
+    <ClInclude Include="HoneyBee\HighScoreScreen.h" />
     <ClInclude Include="platforms\win\resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="DemoScreens\DemoScreenBindingInstructions.h" />
@@ -231,6 +236,7 @@ cd ..\Tools\BuildScripts\
     <ClInclude Include="DemoGameManager.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Config\ActorDef\FlowerActor.lua" />
     <None Include="Config\defaults.lua" />
     <None Include="Config\input_bindings.ini" />
     <None Include="Config\tuning.lua" />
@@ -239,10 +245,16 @@ cd ..\Tools\BuildScripts\
     <None Include="Config\Level\level_demo.lua" />
     <None Include="Config\Level\maze.lua" />
     <None Include="Config\ActorDef\demo_actors.lua" />
+    <None Include="HoneyBee\scores.dat" />
     <None Include="Logs\LogFile.log" />
     <None Include="Documentation\Attributions.txt" />
     <None Include="Documentation\GameInfo.txt" />
     <None Include="platforms\win\angel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Config\setup.txt" />
+    <Text Include="DemoScreens\setup.txt" />
+    <Text Include="setup.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

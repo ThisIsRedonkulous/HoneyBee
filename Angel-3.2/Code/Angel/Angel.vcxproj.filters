@@ -450,5 +450,8 @@
     <None Include="Scripting\EngineScripts\util.lua">
       <Filter>Scripting\EngineScripts</Filter>
     </None>
+    <None Include="flower_actor.i">
+      <Filter>Scripting\Interfaces</Filter>
+    </None>
   </ItemGroup>
 </Project>

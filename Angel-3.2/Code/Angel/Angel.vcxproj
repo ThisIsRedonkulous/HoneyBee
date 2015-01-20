@@ -226,6 +226,7 @@
     <ClInclude Include="AngelConfig.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="flower_actor.i" />
     <None Include="Scripting\Interfaces\actor.i" />
     <None Include="Scripting\Interfaces\angel.i" />
     <None Include="Scripting\Interfaces\camera.i" />

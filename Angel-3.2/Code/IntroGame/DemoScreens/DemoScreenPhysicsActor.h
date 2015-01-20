@@ -38,16 +38,21 @@ class DemoScreenPhysicsActor : public DemoScreen, public MessageListener
 {
 public:
 	DemoScreenPhysicsActor();
-	void ReceiveMessage(Message* message);
+	virtual void ReceiveMessage(Message* message);
+	void displayTime();
+	void displayScore();
+	void displayQuestion();
+	void updateInc();
+	void setScore(int i);
+	void loadFile(FILE *file);
 	virtual void Start();
 	virtual void Update(float dt);
-
 private:
-	TextActor *t, *score, *timer;
-	int points;
-	bool questionTime;
+	int slower = 0 ,score, inc;
+	bool questionTime, incrementing;
 	PhysicsActor *p1;
-	PhysicsActor *p2;
-	FlowerActor *flower;
+	FlowerActor *curFlower;
+	float startTime=0;
 	Vector2 *vector;
+	String question, scoreText, incText;
 };

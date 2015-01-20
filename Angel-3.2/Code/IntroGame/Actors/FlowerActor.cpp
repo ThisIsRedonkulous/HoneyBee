@@ -1,21 +1,26 @@
 #include "stdafx.h"
 #include "FlowerActor.h"
+#include "HoneyBee\FlowerMessage.h"
 #include <cstring>
 
-FlowerActor::FlowerActor(char *q, char *name)
+FlowerActor::FlowerActor(const char *q, char *name)
 {
 	question = q;
+	//std::cout << question;
 	answer = false;
 	SetName(name);
 	char taco[30];
 	strcpy_s(taco, "CollisionStartWith");
-	strcat_s(taco, name);
+	strcat_s(taco, this->GetName().c_str());
 	theSwitchboard.SubscribeTo(this, taco);
 }
 
+FlowerActor::FlowerActor()
+{}
+
 FlowerActor::~FlowerActor()
 {
-	free(question);
+	//delete(question);
 }
 
 void FlowerActor::answered()
@@ -29,6 +34,23 @@ void FlowerActor::answered()
 
 void FlowerActor::ReceiveMessage(Message *m)
 {
-	TypedMessage<char*> *mess = new TypedMessage<char*>("QuestionTime", question);
+	FlowerMessage *mess = new FlowerMessage("QuestionTime", question.c_str(), this);
+	//std::cout << question;
 	theSwitchboard.Broadcast(mess);
+}
+
+void FlowerActor::SetQuestion(char *q)
+{
+	//if (question == nullptr)
+	//	question = q;
+//	else
+	{
+	//	free(question);
+//		question = q;
+	}
+}
+
+void FlowerActor::SetAnswer(bool b)
+{
+	answer = b;
 }

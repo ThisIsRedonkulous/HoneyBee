@@ -242,18 +242,18 @@ void PhysicsActor::SetDrawSize(float x, float y)
 
 void PhysicsActor::SetPosition(float x, float y)
 {
-	if (_physBody == NULL)
+	//if (_physBody == NULL)
 		Actor::SetPosition(x, y);
-	else 
-		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetPosition()");
+	//else 
+		//sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetPosition()");
 }
 
 void PhysicsActor::SetPosition(const Vector2& pos)
 {
-	if (_physBody == NULL)
+	//if (_physBody == NULL)
 		Actor::SetPosition(pos);
-	else
-		sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetPosition()");
+	//else
+		//sysLog.Printf(POST_PHYSICS_INIT_WARNING, "SetPosition()");
 }
 
 void PhysicsActor::SetRotation(float rotation)

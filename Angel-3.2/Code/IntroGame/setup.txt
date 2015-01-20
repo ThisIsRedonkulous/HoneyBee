@@ -1,0 +1,11 @@
+2
+ENGLISH MOTHERFUCKER ~
+0
+size: 2 2
+position: 5 9
+sprite: Resources/Images/bee.png
+SOME FRIES MOTHERFUCKER ~
+1
+size: 2 2
+position: 2 3
+sprite: Resources/Images/bee.png

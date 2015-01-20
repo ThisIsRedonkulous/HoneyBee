@@ -50,7 +50,6 @@ Switchboard& Switchboard::GetInstance()
 
 void Switchboard::Broadcast(Message* message)
 {
-	std::cout << message->GetMessageName() + "\n";
 	_messages.push(message);
 }
 
